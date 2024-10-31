@@ -1,17 +1,115 @@
+<!-- hello, wait for new very (not) exciting projects :3 -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiDNY - Goodbye</title>
-    <link rel="icon" href="LDCat.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            background-color: #2e2e2e; 
+            border: 1px solid #444; 
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #00bfff;
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin: 10px 0; 
+        }
+
+        #animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -50px;
+            width: 30px;
+            height: 50px;
+            background-color: transparent;
+            border: 2px solid #00bfff; 
+            border-radius: 15px;
+            animation: flyAway 8s forwards; 
+        }
+
+        @keyframes flyAway {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-200vh); 
+            }
+        }
+    </style>
 </head>
+<body>
+    <div class="container">
         <h1>LiDNY</h1>
-        <p>Here lies LiDNY, a small project by Me (SonicPika) that Shutdown Oct 21st</p>
-        <p>This website is just gonna be a placeholder since it's Useless. Please Download the repos u need, since they are going down Oct 25th. thank you for reading and cya some other time!</p>
+        <p>Here lies LiDNY, a small project by Me (SonicPika) that Shutdown Oct 21st.</p>
+        <p>This website is just gonna be a placeholder since it's useless.</p>
+        <p>Please download the repos you need, since they are going down Oct 25th.</p>
+        <p>Thank you for reading and cya some other time!</p>
         <p>Goodbye</p>
-    <footer>
+        <p><a href="https://lidny.online/other" target="_blank">Future projects here</a> - <a href="https://sonicpikalidny.github.io" target="_blank">My GitHub</a></p>
         <p>© LiDNY 2021 - 2024. All rights eaten by Koteyka and Chernishka :3</p>
-    </footer>
+    </div>
+    <div id="animation"></div>
+    <script>
+        const animationContainer = document.getElementById('animation');
+        const numBalloons = 20;
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = (Math.random() * 3 + 5) + 's'; 
+            balloon.style.opacity = Math.random();
+
+            animationContainer.appendChild(balloon);
+
+            setTimeout(() => {
+                balloon.remove();
+            }, 8000); 
+        }
+
+        function init() {
+            setInterval(createBalloon, 500);
+        }
+
+        window.onload = init;
+    </script>
 </body>
 </html>
